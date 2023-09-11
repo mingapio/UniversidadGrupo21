@@ -19,6 +19,13 @@ public class materia {
 
    public materia(){}
 
+    public materia(int idMateria, String nombre, LocalDate año, boolean estado) {
+        this.idMateria = idMateria;
+        this.nombre = nombre;
+        this.año = año;
+        this.estado = estado;
+    }
+
     public materia(String nombre, LocalDate año, boolean estado) {
         this.nombre = nombre;
         this.año = año;
