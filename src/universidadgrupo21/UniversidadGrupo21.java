@@ -5,6 +5,11 @@
  */
 package universidadgrupo21;
 
+import java.time.LocalDate;
+import java.time.Month;
+import universidadgrupo21.accesoaDatos.AlumnoData;
+import universidadgrupo21.entidades.Alumno;
+
 /**
  *
  * @author Admin
@@ -15,7 +20,13 @@ public class UniversidadGrupo21 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
+       AlumnoData alu = new AlumnoData();
+////       alu.guardarAlumno(jacinto);
+//       alu.modificarAlumno(jacinto);
+        alu.eliminarAlumno(4);
+        
         
     }
     

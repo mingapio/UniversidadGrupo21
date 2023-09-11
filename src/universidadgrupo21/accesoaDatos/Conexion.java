@@ -21,11 +21,11 @@ public class Conexion {
     private Conexion() {
     }
 
-    private static Connection conectorCin() {
+    public static Connection conectorCin() {
         if (conectar == null) {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/universidad_punta", "root", "");
+                conectar = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidad_punta", "root", "");
 
             } catch (ClassNotFoundException con) {
                 JOptionPane.showMessageDialog(null, "error al cargar dirver" + con.getMessage());
