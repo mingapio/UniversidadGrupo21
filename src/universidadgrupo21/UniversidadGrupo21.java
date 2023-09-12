@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.entidades.Alumno;
-import universidad.materia;
+import universidadgrupo21.entidades.Materia;
 import universidadgrupo21.accesoaDatos.MateriaData;
 /**
  *
@@ -22,9 +22,9 @@ public class UniversidadGrupo21 {
      */
     public static void main(String[] args) {
        
-       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
-       AlumnoData alu = new AlumnoData();
-       materia carpinteria =new materia("carpinteria", 3, true);
+//       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
+//       AlumnoData alu = new AlumnoData();
+       Materia carpinteria =new Materia("carpinteria", 3, true);
        MateriaData mat=new MateriaData();
        mat.cargarMaterias(carpinteria);
 ////       alu.guardarAlumno(jacinto);

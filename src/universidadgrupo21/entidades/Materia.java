@@ -3,30 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package universidad;
+package universidadgrupo21.entidades;
 
-import java.time.LocalDate;
 
 /**
  *
  * @author fojos
  */
-public class materia {
+public class Materia {
     private int idMateria;
     private String nombre;
     private int año;
     private boolean estado;
 
-   public materia(){}
+   public Materia(){}
 
-    public materia(int idMateria, String nombre, int año, boolean estado) {
+    public Materia(int idMateria, String nombre, int año, boolean estado) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.año = año;
         this.estado = estado;
     }
 
-    public materia(String nombre, int año, boolean estado) {
+    public Materia(String nombre, int año, boolean estado) {
         this.nombre = nombre;
         this.año = año;
         this.estado = estado;

@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import universidad.materia;
+import universidadgrupo21.entidades.Materia;
 
 /**
  *
@@ -17,15 +17,16 @@ import universidad.materia;
  */
 public class MateriaData {
 
-    private Connection enchufe;
+    private Connection enchufe = null;
 
     public MateriaData() {
         enchufe = Conexion.conectorCin();
     }
 
-    public void cargarMaterias(materia matex) {
+    public void cargarMaterias(Materia matex) {
+
+        String sql = "INSERT INTO materia (nombre, año, estado) VALUES (?,?,?)";
         try {
-            String sql = "INSERT INTO `materia`(`nombre`, `año`, `estado`) VALUES (?,?,?)";
 
             PreparedStatement ups = enchufe.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ups.setString(1, matex.getNombre());
@@ -38,7 +39,7 @@ public class MateriaData {
             if (answer.next()) {
 
                 matex.setIdMateria(answer.getInt(1));
-                JOptionPane.showMessageDialog(null, "Alumno agregado");
+                JOptionPane.showMessageDialog(null, "Materia agregada");
             }
             ups.close();
         } catch (SQLException ex) {
@@ -48,13 +49,13 @@ public class MateriaData {
 
     }
 
-    public void modificarMateria(materia matex) {
+    public void modificarMateria(Materia matex) {
         String sql = "UPDATE materia SET nombre=?, año=?, estado=? WHERE nombre =?";
         try {
             PreparedStatement ups = enchufe.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ups.setString(1, matex.getNombre());
             ups.setInt(2, matex.getAño());
-            ups.setBoolean(0, matex.getEstado());
+            ups.setBoolean(3, matex.getEstado());
 
             int exito = ups.executeUpdate();
             if (exito == 1) {
@@ -68,18 +69,18 @@ public class MateriaData {
     }
 
     public void eliminarMateria(int id) {
-             String sql="UPDATE materia Set estado =0 WHERE idmateira =0 ";
+        String sql = "UPDATE materia Set estado =0 WHERE idmateria =? ";
         try {
-            PreparedStatement ups = enchufe.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        ups.setInt(1, id);
-        int exit=ups.executeUpdate();
-        if(exit==1){
-            JOptionPane.showMessageDialog(null,"materia borrada");
-        
-        }
-        
+            PreparedStatement ups = enchufe.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ups.setInt(1, id);
+            int exit = ups.executeUpdate();
+            if (exit == 1) {
+                JOptionPane.showMessageDialog(null, "materia borrada");
+
+            }
+
         } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex.getMessage());
         }
     }
 
