@@ -93,8 +93,41 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex.getMessage());
         }
         
-        
+       
     }
            
-    
+     public Alumno buscador(int id){
+     
+     String sql="SELECT  DNI, nombre, apellido, nacimiento, estado FROM alumno WHERE idalumno = ?  AND estado=1";
+       Alumno pibe =null;  
+     try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+           ps.setInt(1, id);
+           ResultSet rs =ps.executeQuery(sql);
+         
+           
+           if(rs.next()){
+        pibe = new Alumno();
+        pibe.setIdalumno(id);
+        pibe.setDni(rs.getInt("DNI"));
+        pibe.setNombre(rs.getString("nombre"));
+        pibe.setApellido(rs.getString("apellido"));
+        pibe.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+        pibe.setEstado(true);
+        
+        }else{
+           
+        JOptionPane.showMessageDialog(null, "sos un fantasma");
+           }
+     ps.close();
+     
+     
+     } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error porque se me canto"+ex.getMessage());
+        }
+     return pibe;
+     }
+
+
+
 }
