@@ -9,7 +9,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.entidades.Alumno;
-
+import universidad.materia;
+import universidadgrupo21.accesoaDatos.MateriaData;
 /**
  *
  * @author Admin
@@ -23,9 +24,12 @@ public class UniversidadGrupo21 {
        
        Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
        AlumnoData alu = new AlumnoData();
+       materia carpinteria =new materia("carpinteria", 3, true);
+       MateriaData mat=new MateriaData();
+       mat.cargarMaterias(carpinteria);
 ////       alu.guardarAlumno(jacinto);
 //       alu.modificarAlumno(jacinto);
-        alu.eliminarAlumno(4);
+        //alu.eliminarAlumno(4);
         
         
     }

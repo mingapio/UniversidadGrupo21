@@ -14,19 +14,19 @@ import java.time.LocalDate;
 public class materia {
     private int idMateria;
     private String nombre;
-    private LocalDate año;
+    private int año;
     private boolean estado;
 
    public materia(){}
 
-    public materia(int idMateria, String nombre, LocalDate año, boolean estado) {
+    public materia(int idMateria, String nombre, int año, boolean estado) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.año = año;
         this.estado = estado;
     }
 
-    public materia(String nombre, LocalDate año, boolean estado) {
+    public materia(String nombre, int año, boolean estado) {
         this.nombre = nombre;
         this.año = año;
         this.estado = estado;
@@ -40,11 +40,11 @@ public class materia {
         this.nombre = nombre;
     }
 
-    public LocalDate getAño() {
+    public int getAño() {
         return año;
     }
 
-    public void setAño(LocalDate año) {
+    public void setAño(int año) {
         this.año = año;
     }
 
@@ -56,6 +56,11 @@ public class materia {
         this.estado = estado;
     }
 
+    public void setIdMateria(int idMateria) {
+        this.idMateria = idMateria;
+    }
+
+    
     @Override
     public String toString() {
         return "materia{" + "nombre=" + nombre + ", a\u00f1o=" + año + ", estado=" + estado + '}';
