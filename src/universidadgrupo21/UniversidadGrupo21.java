@@ -23,15 +23,15 @@ public class UniversidadGrupo21 {
     public static void main(String[] args) {
        
 //       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
-//       AlumnoData alu = new AlumnoData();
-       Materia carpinteria =new Materia("carpinteria", 3, true);
-       MateriaData mat=new MateriaData();
-       mat.cargarMaterias(carpinteria);
+       AlumnoData alu = new AlumnoData();
+       ///Materia carpinteria =new Materia("carpinteria", 3, true);
+       //MateriaData mat=new MateriaData();
+       //mat.cargarMaterias(carpinteria);
 ////       alu.guardarAlumno(jacinto);
 //       alu.modificarAlumno(jacinto);
         //alu.eliminarAlumno(4);
-        
-        
+        Alumno chanta = alu.buscador(3);
+        System.out.println("se encontro"+chanta);
     }
     
 }

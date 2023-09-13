@@ -98,7 +98,7 @@ public class AlumnoData {
            
      public Alumno buscador(int id){
      
-     String sql="SELECT  DNI, nombre, apellido, nacimiento, estado FROM alumno WHERE idalumno = ?  AND estado=1";
+     String sql=" SELECT DNI ,nombre ,apellido ,nacimiento ,estado FROM alumno WHERE idalumno = ?  AND estado =1";
        Alumno pibe =null;  
      try {
             PreparedStatement ps = cn.prepareStatement(sql);
