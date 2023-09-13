@@ -30,7 +30,7 @@ public class UniversidadGrupo21 {
 ////       alu.guardarAlumno(jacinto);
 //       alu.modificarAlumno(jacinto);
         //alu.eliminarAlumno(4);
-        Alumno chanta = alu.buscador(3);
+        Alumno chanta = alu.buscador(1);
         System.out.println("se encontro"+chanta);
     }
     

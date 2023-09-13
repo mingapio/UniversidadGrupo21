@@ -103,7 +103,7 @@ public class AlumnoData {
      try {
             PreparedStatement ps = cn.prepareStatement(sql);
            ps.setInt(1, id);
-           ResultSet rs =ps.executeQuery(sql);
+           ResultSet rs =ps.executeQuery();
          
            
            if(rs.next()){
