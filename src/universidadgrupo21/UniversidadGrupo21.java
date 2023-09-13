@@ -21,7 +21,7 @@ public class UniversidadGrupo21 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+    //ojala que este funcione por dios fdsgfeaeavear   
 //       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
        AlumnoData alu = new AlumnoData();
        ///Materia carpinteria =new Materia("carpinteria", 3, true);
