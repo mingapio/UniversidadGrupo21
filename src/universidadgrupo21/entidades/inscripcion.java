@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package universidad;
+package universidadgrupo21.entidades;
 
 /**
  *
@@ -12,15 +12,31 @@ package universidad;
 public class inscripcion {
     private int idinscripcion;   
     private int nota;
-    private  int alumno ;
-    private int materia;
+    private  Alumno alumnox ;
+    private Materia materiax;
     
     public inscripcion (){}
 
-    public inscripcion(int nota, int alumno, int materia) {
+    public inscripcion(int nota, Alumno alumnox, Materia materiax) {
         this.nota = nota;
-        this.alumno = alumno;
-        this.materia = materia;
+        this.alumnox = alumnox;
+        this.materiax = materiax;
+    }
+
+    public inscripcion(int idinscripcion, int nota, Alumno alumnox, Materia materiax) {
+        this.idinscripcion = idinscripcion;
+        this.nota = nota;
+        this.alumnox = alumnox;
+        this.materiax = materiax;
+    }
+
+    
+    public int getIdinscripcion() {
+        return idinscripcion;
+    }
+
+    public void setIdinscripcion(int idinscripcion) {
+        this.idinscripcion = idinscripcion;
     }
 
     public int getNota() {
@@ -31,22 +47,28 @@ public class inscripcion {
         this.nota = nota;
     }
 
-    public int getAlumno() {
-        return alumno;
+    public Alumno getAlumnox() {
+        return alumnox;
     }
 
-    public void setAlumno(int alumno) {
-        this.alumno = alumno;
+    public void setAlumnox(Alumno alumnox) {
+        this.alumnox = alumnox;
     }
 
-    public int getMateria() {
-        return materia;
+    public Materia getMateriax() {
+        return materiax;
     }
 
-    public void setMateria(int materia) {
-        this.materia = materia;
+    public void setMateriax(Materia materiax) {
+        this.materiax = materiax;
     }
-    
+
+    @Override
+    public String toString() {
+        return "inscripcion{" + "idinscripcion=" + idinscripcion + ", nota=" + nota + ", alumnox=" + alumnox + ", materiax=" + materiax + '}';
+    }
+
+   
     
     
 }

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -55,9 +57,9 @@ public class AlumnoData {
         }
     }
 
-    public void modificarAlumno(Alumno alumno){
-        
-        String sql= "UPDATE alumno SET dni = ?, nombre= ?, apellido = ?, nacimiento = ? "
+    public void modificarAlumno(Alumno alumno) {
+
+        String sql = "UPDATE alumno SET dni = ?, nombre= ?, apellido = ?, nacimiento = ? "
                 + "WHERE idalumno = ?";
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
@@ -68,66 +70,90 @@ public class AlumnoData {
             ps.setInt(5, alumno.getIdalumno());
             ps.setBoolean(6, true);
             int exito = ps.executeUpdate();
-            if(exito==1){
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno modificado");
             }
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex.getMessage());
         }
     }
-    
-    public void eliminarAlumno (int id){
-        
+
+    public void eliminarAlumno(int id) {
+
         String sql = "UPDATE alumno set estado = 0 WHERE idalumno = ?";
-        
+
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
             int exit = ps.executeUpdate();
-            if(exit==1){
+            if (exit == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex.getMessage());
         }
-        
-       
+
     }
-           
-     public Alumno buscador(int id){
-     
-     String sql=" SELECT DNI ,nombre ,apellido ,nacimiento ,estado FROM alumno WHERE idalumno = ?  AND estado =1";
-       Alumno pibe =null;  
-     try {
+
+    public Alumno buscador(int id) {
+
+        String sql = " SELECT DNI ,nombre ,apellido ,nacimiento ,estado FROM alumno WHERE idalumno = ?  AND estado =1";
+        Alumno pibe = null;
+        try {
             PreparedStatement ps = cn.prepareStatement(sql);
-           ps.setInt(1, id);
-           ResultSet rs =ps.executeQuery();
-         
-           
-           if(rs.next()){
-        pibe = new Alumno();
-        pibe.setIdalumno(id);
-        pibe.setDni(rs.getInt("DNI"));
-        pibe.setNombre(rs.getString("nombre"));
-        pibe.setApellido(rs.getString("apellido"));
-        pibe.setNacimiento(rs.getDate("nacimiento").toLocalDate());
-        pibe.setEstado(true);
-        
-        }else{
-           
-        JOptionPane.showMessageDialog(null, "sos un fantasma");
-           }
-     ps.close();
-     
-     
-     } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error porque se me canto"+ex.getMessage());
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                pibe = new Alumno();
+                pibe.setIdalumno(id);
+                pibe.setDni(rs.getInt("DNI"));
+                pibe.setNombre(rs.getString("nombre"));
+                pibe.setApellido(rs.getString("apellido"));
+                pibe.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                pibe.setEstado(true);
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "sos un fantasma");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error porque se me canto" + ex.getMessage());
         }
-     return pibe;
-     }
+        return pibe;
+    }
 
+    public List<Alumno> listador() {
 
+        String sql = " SELECT idalumno ,DNI ,nombre ,apellido ,nacimiento ,estado FROM alumno WHERE estado =1";
+       ArrayList<Alumno> pibes = new ArrayList<>();
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+           
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+             Alumno pibe = new Alumno();
+                pibe.setIdalumno(rs.getInt("idalumno"));
+                pibe.setDni(rs.getInt("DNI"));
+                pibe.setNombre(rs.getString("nombre"));
+                pibe.setApellido(rs.getString("apellido"));
+                pibe.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                pibe.setEstado(true);
+                pibes.add(pibe);
+            }
+
+              
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error porque se me canto" + ex.getMessage());
+        }
+        return pibes;
+    }
 
 }
