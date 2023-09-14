@@ -12,6 +12,8 @@ import universidadgrupo21.entidades.Alumno;
 import universidadgrupo21.entidades.Materia;
 import universidadgrupo21.accesoaDatos.MateriaData;
 import java.util.ArrayList;
+import universidadgrupo21.accesoaDatos.inscripcionData;
+import universidadgrupo21.entidades.inscripcion;
 /**
  *
  * @author Admin
@@ -26,7 +28,7 @@ public class UniversidadGrupo21 {
 //       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
       // AlumnoData alu = new AlumnoData();
        ///Materia carpinteria =new Materia("carpinteria", 3, true);
-       MateriaData mat=new MateriaData();
+     //  MateriaData mat=new MateriaData();
        //mat.cargarMaterias(carpinteria);
 ////       alu.guardarAlumno(jacinto);
 //       alu.modificarAlumno(jacinto);
@@ -50,6 +52,33 @@ public class UniversidadGrupo21 {
     
     }*/
     
+    AlumnoData ad=new AlumnoData();
+    MateriaData md=new MateriaData();
+    inscripcionData id= new inscripcionData();
+    
+    Alumno alu=ad.buscador(2);
+    Materia mat=md.buscadorex(4);
+    inscripcion ins= new inscripcion (7,alu,mat);
+    
+   // id.guardarInscripcion(ins);
+    
+    //id.actualizarNota(2, 4, 10);
+    //id.borrarInscripcionMateriaAlumno(2, 4);
+   /* for(inscripcion inscripcion:id.ObtenerInscripciones()){
+        System.out.println("id: "+inscripcion.getIdinscripcion());
+        System.out.println("Apellido: "+inscripcion.getAlumnox().getApellido());
+        System.out.println("Materia: "+inscripcion.getMateriax().getNombre());
+        System.out.println("----------------------");
+    */
+   
+   for(inscripcion inscripcion:id.ObtenerInscripcionesPorAlumno(1)){
+        System.out.println("id: "+inscripcion.getAlumnox().getIdalumno());
+        System.out.println("Apellido: "+inscripcion.getAlumnox().getApellido());
+        System.out.println("Materia: "+inscripcion.getMateriax().getNombre());
+        System.out.println("----------------------");
+    }
+    
+   
     
     }
     
