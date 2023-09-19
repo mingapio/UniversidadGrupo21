@@ -130,14 +130,14 @@ public class AlumnoData {
     public List<Alumno> listador() {
 
         String sql = " SELECT idalumno ,DNI ,nombre ,apellido ,nacimiento ,estado FROM alumno WHERE estado =1";
-       ArrayList<Alumno> pibes = new ArrayList<>();
+        ArrayList<Alumno> pibes = new ArrayList<>();
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-           
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-             Alumno pibe = new Alumno();
+                Alumno pibe = new Alumno();
                 pibe.setIdalumno(rs.getInt("idalumno"));
                 pibe.setDni(rs.getInt("DNI"));
                 pibe.setNombre(rs.getString("nombre"));
@@ -147,7 +147,6 @@ public class AlumnoData {
                 pibes.add(pibe);
             }
 
-              
             ps.close();
 
         } catch (SQLException ex) {
@@ -156,4 +155,31 @@ public class AlumnoData {
         return pibes;
     }
 
+    public Alumno buscarAlumnodni(int dni) {
+        Alumno alumno = null;
+        String sql = "SELECT idalumno,DNI,apellido,nombre,nacimiento FROM alumno WHERE DNI=? AND estado=1";
+
+        try {
+
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                alumno = new Alumno();
+                alumno.setIdalumno(rs.getInt("idalumno"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setDni(rs.getInt("DNI"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setNacimiento(rs.getDate("nacimiento").toLocalDate());
+                alumno.setEstado(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe alumno con ese DNI");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error acceder tabla alumno");
+        }
+        return alumno;
+    }
 }

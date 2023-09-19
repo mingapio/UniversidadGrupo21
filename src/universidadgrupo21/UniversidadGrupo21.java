@@ -14,6 +14,8 @@ import universidadgrupo21.accesoaDatos.MateriaData;
 import java.util.ArrayList;
 import universidadgrupo21.accesoaDatos.inscripcionData;
 import universidadgrupo21.entidades.inscripcion;
+import view.GestionUni;
+
 
 /**
  *
@@ -25,7 +27,11 @@ public class UniversidadGrupo21 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // ojala que este funcione por dios fdsgfeaeavear   
+     GestionUni tuni =  new GestionUni();
+     tuni.setVisible(true);
+
+    
+// ojala que este funcione por dios fdsgfeaeavear   
 //       Alumno jacinto = new Alumno(4,723456724, " Francisca Jacinto", "Fransuá", LocalDate.of(1979, Month.JUNE, 12), true);
         // AlumnoData alu = new AlumnoData();
         ///Materia carpinteria =new Materia("carpinteria", 3, true);
@@ -53,13 +59,13 @@ public class UniversidadGrupo21 {
     
     }*/
 
-        AlumnoData ad = new AlumnoData();
-        MateriaData md = new MateriaData();
-        inscripcionData id = new inscripcionData();
-
-        Alumno alu = ad.buscador(2);
-        Materia mat = md.buscadorex(4);
-        inscripcion ins = new inscripcion(7, alu, mat);
+//        AlumnoData ad = new AlumnoData();
+//        MateriaData md = new MateriaData();
+//        inscripcionData id = new inscripcionData();
+//
+//        Alumno alu = ad.buscador(2);
+//        Materia mat = md.buscadorex(4);
+//        inscripcion ins = new inscripcion(7, alu, mat);
 
         // id.guardarInscripcion(ins);
         //id.actualizarNota(2, 4, 10);
@@ -81,16 +87,18 @@ public class UniversidadGrupo21 {
 //            System.out.println("" + matins.getNombre());
 //            System.out.println("" + matins.getIdMateria());
 //            System.out.println("" + matins.getAño());
-//   }
-        for (Alumno al : id.obtenerAlumnosXMateria(4)) {
-            System.out.println("" + al.getIdalumno());
-            System.out.println("" + al.getDni());
-            System.out.println("" + al.getApellido());
-            System.out.println("" + al.getNombre());
-            System.out.println("" + al.getNacimiento());
-            System.out.println("" + al.getEstado());
-        }
+////   }
+//        for (Alumno al : id.obtenerAlumnosXMateria(4)) {
+//            System.out.println("" + al.getIdalumno());
+//            System.out.println("" + al.getDni());
+//            System.out.println("" + al.getApellido());
+//            System.out.println("" + al.getNombre());
+//            System.out.println("" + al.getNacimiento());
+//            System.out.println("" + al.getEstado());
+//        }
+//
+//    }
 
+//}
     }
-
 }

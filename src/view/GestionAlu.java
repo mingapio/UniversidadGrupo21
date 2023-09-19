@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.entidades.Alumno;
 
@@ -45,12 +46,12 @@ public class GestionAlu extends javax.swing.JInternalFrame {
         jtape = new javax.swing.JTextField();
         jtnomb = new javax.swing.JTextField();
         jrest = new javax.swing.JRadioButton();
-        jdcfecha = new com.toedter.calendar.JDateChooser();
         jbnuevo = new javax.swing.JButton();
         jbeliminar = new javax.swing.JButton();
         jbguardar = new javax.swing.JButton();
         jbsalir = new javax.swing.JButton();
         jbbuscar = new javax.swing.JButton();
+        jdcfecha = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(0, 102, 0));
         setClosable(true);
@@ -90,6 +91,11 @@ public class GestionAlu extends javax.swing.JInternalFrame {
         jbsalir.setText("Salir");
 
         jbbuscar.setText("Buscar");
+        jbbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbbuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,16 +107,10 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtnomb, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtape, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jLabel6)
+                            .addComponent(jtnomb, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtape, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(63, 63, 63)
@@ -126,13 +126,18 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jbbuscar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbnuevo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbnuevo)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addComponent(jbeliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbguardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbsalir)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbeliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbguardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbsalir)))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,14 +159,14 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jtnomb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jrest))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrest)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbnuevo)
                     .addComponent(jbeliminar)
@@ -181,8 +186,28 @@ public class GestionAlu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbguardarActionPerformed
 
     private void jbeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbeliminarActionPerformed
-        
+        Alumno alu=null;
+        if(alu==null){
+        alu = new Alumno(alu.getIdalumno(),Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrest.isEnabled());
+        AlumnoData aluD = new AlumnoData();
+        int culo = alu.getIdalumno();
+      aluD.eliminarAlumno(culo);
+        }
     }//GEN-LAST:event_jbeliminarActionPerformed
+
+    private void jbbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarActionPerformed
+       Alumno alu= new Alumno();
+       AlumnoData aluD = new AlumnoData();
+       alu.setDni(Integer.parseInt(jtdoc.getText()));
+       aluD.buscarAlumnodni(alu.getDni());
+       JOptionPane.showMessageDialog(null,aluD.buscarAlumnodni(alu.getDni()));
+        
+       jtnomb.setText(alu.getNombre());
+       jtape.setText(alu.getApellido());
+       
+                
+        
+    }//GEN-LAST:event_jbbuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
