@@ -45,7 +45,7 @@ public class GestionAlu extends javax.swing.JInternalFrame {
         jtdoc = new javax.swing.JTextField();
         jtape = new javax.swing.JTextField();
         jtnomb = new javax.swing.JTextField();
-        jrest = new javax.swing.JRadioButton();
+        jrestado = new javax.swing.JRadioButton();
         jbnuevo = new javax.swing.JButton();
         jbeliminar = new javax.swing.JButton();
         jbguardar = new javax.swing.JButton();
@@ -124,9 +124,7 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                                 .addGap(57, 57, 57)
                                 .addComponent(jbeliminar)
                                 .addGap(27, 27, 27)
-                                .addComponent(jbguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                .addComponent(jbsalir))
+                                .addComponent(jbguardar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel6)
@@ -134,14 +132,16 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(8, 8, 8)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jrest)
+                                            .addComponent(jrestado)
                                             .addComponent(jtnomb, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jtape, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jtdoc, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jtdoc, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jdcfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(9, 9, 9)
+                        .addComponent(jbsalir)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(140, 140, 140)
@@ -171,13 +171,13 @@ public class GestionAlu extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrest)
+                    .addComponent(jrestado)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(jdcfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbnuevo)
                     .addComponent(jbeliminar)
@@ -191,7 +191,7 @@ public class GestionAlu extends javax.swing.JInternalFrame {
 
     private void jbguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbguardarActionPerformed
         
-        Alumno alu = new Alumno(Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrest.isEnabled());
+        Alumno alu = new Alumno(Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrestado.isEnabled());
         AlumnoData aluD = new AlumnoData();
         aluD.guardarAlumno(alu);
     }//GEN-LAST:event_jbguardarActionPerformed
@@ -199,7 +199,7 @@ public class GestionAlu extends javax.swing.JInternalFrame {
     private void jbeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbeliminarActionPerformed
         Alumno alu=null;
         if(alu==null){
-        alu = new Alumno(alu.getIdalumno(),Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrest.isEnabled());
+        alu = new Alumno(alu.getIdalumno(),Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrestado.isEnabled());
         AlumnoData aluD = new AlumnoData();
         int culo = alu.getIdalumno();
       aluD.eliminarAlumno(culo);
@@ -231,7 +231,7 @@ try {
             jtnomb.setText(alu.getNombre());
             jtape.setText(alu.getApellido());
             jdcfecha.setDate(Date.from(alu.getNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-
+            jrestado.setSelected(alu.getEstado());
             // Puedes mostrar un mensaje de éxito si lo deseas
             JOptionPane.showMessageDialog(null, "Alumno encontrado.");
         } else {
@@ -265,7 +265,7 @@ try {
     private javax.swing.JButton jbnuevo;
     private javax.swing.JButton jbsalir;
     private com.toedter.calendar.JDateChooser jdcfecha;
-    private javax.swing.JRadioButton jrest;
+    private javax.swing.JRadioButton jrestado;
     private javax.swing.JTextField jtape;
     private javax.swing.JTextField jtdoc;
     private javax.swing.JTextField jtnomb;

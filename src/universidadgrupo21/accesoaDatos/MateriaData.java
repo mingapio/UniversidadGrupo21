@@ -34,7 +34,7 @@ public class MateriaData {
             PreparedStatement ups = enchufe.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ups.setString(1, matex.getNombre());
             ups.setInt(2, matex.getAño());
-            ups.setBoolean(3, true);
+            ups.setBoolean(3, matex.getEstado());
             ups.executeUpdate();
 
             ResultSet answer = ups.getGeneratedKeys();

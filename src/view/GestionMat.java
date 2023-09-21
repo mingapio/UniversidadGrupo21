@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package view;
-
+import javax.swing.JOptionPane;
+import universidadgrupo21.*;
+import universidadgrupo21.accesoaDatos.MateriaData;
+import universidadgrupo21.entidades.Materia;
 /**
  *
  * @author Admin
@@ -59,12 +62,32 @@ public class GestionMat extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado:");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Nuevo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Salir");
 
@@ -139,6 +162,48 @@ public class GestionMat extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Materia subject = new Materia(); 
+        MateriaData ponele = new MateriaData();
+        Materia encontrada = ponele.buscadorex(Integer.parseInt(jTextField1.getText()));
+        
+        jTextField2.setText(encontrada.getNombre());
+        jTextField3.setText(String.valueOf(encontrada.getAño()));
+        jRadioButton1.setSelected(encontrada.getEstado());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+        Materia subject= new Materia(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), jRadioButton1.isSelected());
+        MateriaData ponele = new MateriaData();
+        ponele.cargarMaterias(subject);
+        }catch(NumberFormatException t){
+        JOptionPane.showMessageDialog(null,"escribi bien mamerto"+t.getMessage());
+        
+        }
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jRadioButton1.setSelected(false);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Materia subject= new Materia();
+        MateriaData ponele= new MateriaData();
+        ponele.eliminarMateria(Integer.parseInt(jTextField1.getText()));
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

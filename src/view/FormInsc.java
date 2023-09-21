@@ -5,17 +5,28 @@
  */
 package view;
 
+import java.sql.Date;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo21.accesoaDatos.AlumnoData;
+import universidadgrupo21.entidades.Alumno;
+
 /**
  *
  * @author Admin
  */
 public class FormInsc extends javax.swing.JInternalFrame {
-
-    /**
+   DefaultTableModel corcho= new DefaultTableModel();
+   public boolean isCellEditable (int f, int c){
+   return false;
+   
+   } 
+   /**
      * Creates new form FormInsc
      */
     public FormInsc() {
         initComponents();
+        organizar();
+        cargarcombo();
     }
 
     /**
@@ -49,7 +60,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccionar un alumno");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("LISTADO DE MATERIAS");
@@ -139,7 +154,21 @@ public class FormInsc extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+        AlumnoData metodo = new AlumnoData();
+        for(Alumno mamerto: metodo.listador()){
+            jComboBox1.addItem(String.valueOf(mamerto.getIdalumno()));
+            jComboBox1.addItem(mamerto.getNombre());
+            jComboBox1.addItem(mamerto.getApellido());
+            jComboBox1.addItem((mamerto.getNacimiento().toString()));
+            
+       
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+ 
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -153,4 +182,25 @@ public class FormInsc extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+public void organizar(){
+corcho.addColumn("id");
+corcho.addColumn("nombre");
+corcho.addColumn("año");
+jTable1.setModel(corcho);
 }
+
+public void cargarcombo(){
+Alumno pibe = new Alumno();
+    jComboBox1.addItem(String.valueOf(pibe.getIdalumno()));
+    jComboBox1.addItem(pibe.getNombre());
+    jComboBox1.addItem(pibe.getApellido());
+    jComboBox1.addItem(pibe.getNacimiento().toString());
+
+
+}
+
+
+
+}
+
+
