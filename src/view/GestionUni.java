@@ -91,6 +91,11 @@ public class GestionUni extends javax.swing.JFrame {
         jMenu3.add(MIformInsc);
 
         jMenuItem3.setText("Manipulación de notas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -98,6 +103,11 @@ public class GestionUni extends javax.swing.JFrame {
         jMenu4.setText("Consultas");
 
         jMenuItem4.setText("Alumnos por materia");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem4);
 
         jMenuBar1.add(jMenu4);
@@ -145,6 +155,19 @@ public class GestionUni extends javax.swing.JFrame {
 
         fin.setVisible(true);
     }//GEN-LAST:event_MIformInscActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        ActuNotas ano = new ActuNotas();
+        escritorio.add(ano);
+
+        ano.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        ConsulAluXMat alumat = new ConsulAluXMat();
+        escritorio.add(alumat);
+        alumat.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
