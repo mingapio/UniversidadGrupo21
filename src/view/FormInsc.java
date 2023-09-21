@@ -5,7 +5,10 @@
  */
 package view;
 
+import java.io.PrintStream;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.entidades.Alumno;
@@ -15,12 +18,15 @@ import universidadgrupo21.entidades.Alumno;
  * @author Admin
  */
 public class FormInsc extends javax.swing.JInternalFrame {
-   DefaultTableModel corcho= new DefaultTableModel();
-   public boolean isCellEditable (int f, int c){
-   return false;
-   
-   } 
-   /**
+
+    DefaultTableModel corcho = new DefaultTableModel();
+
+    public boolean isCellEditable(int f, int c) {
+        return false;
+
+    }
+
+    /**
      * Creates new form FormInsc
      */
     public FormInsc() {
@@ -122,7 +128,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(107, 107, 107)
+                                .addGap(91, 91, 91)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
@@ -131,11 +137,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,7 +149,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
@@ -155,20 +161,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-        AlumnoData metodo = new AlumnoData();
-        for(Alumno mamerto: metodo.listador()){
-            jComboBox1.addItem(String.valueOf(mamerto.getIdalumno()));
-            jComboBox1.addItem(mamerto.getNombre());
-            jComboBox1.addItem(mamerto.getApellido());
-            jComboBox1.addItem((mamerto.getNacimiento().toString()));
-            
-       
-        }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
- 
 
-    
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -182,25 +179,24 @@ public class FormInsc extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-public void organizar(){
-corcho.addColumn("id");
-corcho.addColumn("nombre");
-corcho.addColumn("año");
-jTable1.setModel(corcho);
+public void organizar() {
+        corcho.addColumn("id");
+        corcho.addColumn("nombre");
+        corcho.addColumn("año");
+        jTable1.setModel(corcho);
+    }
+
+    private void cargarcombo() {
+       // Alumno pibe = new Alumno();
+        AlumnoData alud=new AlumnoData();
+        for (int i = 0;i< alud.listador().size(); i++) {
+         jComboBox1.addItem(alud.listador().get(i).toString());
+         //jComboBox1.addItem(alud.listador().get(i).getApellido());
+        }
+            
+        
+        
+
+    }
+
 }
-
-public void cargarcombo(){
-Alumno pibe = new Alumno();
-    jComboBox1.addItem(String.valueOf(pibe.getIdalumno()));
-    jComboBox1.addItem(pibe.getNombre());
-    jComboBox1.addItem(pibe.getApellido());
-    jComboBox1.addItem(pibe.getNacimiento().toString());
-
-
-}
-
-
-
-}
-
-
