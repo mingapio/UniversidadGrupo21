@@ -180,21 +180,17 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        
-        
-        MateriaData gluteos = new MateriaData();
-        if(jRadioButton1.isEnabled()){
-            for(Materia yupi: gluteos.listadorex()){
-            corcho.addRow(new Object[]{yupi.getIdMateria(),yupi.getNombre(),yupi.getAño()});
-            
-            
-            }
-        
-        
-    
-        }
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+        MateriaData gluteos = new MateriaData();
+        if (jRadioButton1.isEnabled()) {
+            for (Materia yupi : gluteos.listadorex()) {
+                corcho.addRow(new Object[]{yupi.getIdMateria(), yupi.getNombre(), yupi.getAño()});
+
+            }
+     
+                  
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -217,15 +213,12 @@ public void organizar() {
     }
 
     private void cargarcombo() {
-       // Alumno pibe = new Alumno();
-        AlumnoData alud=new AlumnoData();
-        for (int i = 0;i< alud.listador().size(); i++) {
-         jComboBox1.addItem(alud.listador().get(i).toString());
-         //jComboBox1.addItem(alud.listador().get(i).getApellido());
+        // Alumno pibe = new Alumno();
+        AlumnoData alud = new AlumnoData();
+        for (int i = 0; i < alud.listador().size(); i++) {
+            jComboBox1.addItem(alud.listador().get(i).toString());
+            //jComboBox1.addItem(alud.listador().get(i).getApellido());
         }
-            
-        
-        
 
     }
 
