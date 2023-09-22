@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo21.accesoaDatos.AlumnoData;
+import universidadgrupo21.accesoaDatos.MateriaData;
 import universidadgrupo21.entidades.Alumno;
+import universidadgrupo21.entidades.Materia;
 
 /**
  *
@@ -66,16 +68,15 @@ public class FormInsc extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccionar un alumno");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("LISTADO DE MATERIAS");
 
         jRadioButton1.setText("Materias inscriptas");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("Materias no inscriptas");
 
@@ -93,6 +94,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Inscribir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Anular inscripción");
 
@@ -165,14 +171,29 @@ public class FormInsc extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        
+        
+        MateriaData gluteos = new MateriaData();
+        if(jRadioButton1.isEnabled()){
+            for(Materia yupi: gluteos.listadorex()){
+            corcho.addRow(new Object[]{yupi.getIdMateria(),yupi.getNombre(),yupi.getAño()});
+            
+            
+            }
+        
+        
+    
+        }
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
