@@ -186,15 +186,15 @@ public class FormInsc extends javax.swing.JInternalFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         
-       inscripcion pibe = (inscripcion)jComboBox1.getSelectedItem(); 
+//       inscripcion pibe = (inscripcion)jComboBox1.getSelectedItem(); 
         inscripcionData gluteos = new inscripcionData();
         removedor(); 
-//        pibe.getIdalumno()= Integer.parseInt(jComboBox1.getSelectedItem());
+       int pibe = (int)jComboBox1.getSelectedItem();
        
        
         if (jRadioButton1.isSelected()) {
       
-            for (Materia yupi : gluteos.obtenerMateriasCursadas(pibe.getAlumnox().getIdalumno())) {
+            for (Materia yupi : gluteos.obtenerMateriasCursadas(pibe)) {
                 corcho.addRow(new Object[]{yupi.getIdMateria(),yupi.getNombre(),yupi.getAño()});
 
             }
