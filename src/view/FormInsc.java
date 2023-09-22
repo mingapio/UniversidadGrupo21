@@ -12,8 +12,10 @@ import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.accesoaDatos.MateriaData;
+import universidadgrupo21.accesoaDatos.inscripcionData;
 import universidadgrupo21.entidades.Alumno;
 import universidadgrupo21.entidades.Materia;
+import universidadgrupo21.entidades.inscripcion;
 
 /**
  *
@@ -46,6 +48,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -71,6 +74,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("LISTADO DE MATERIAS");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Materias inscriptas");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +82,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Materias no inscriptas");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -180,19 +185,31 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-
-        MateriaData gluteos = new MateriaData();
-        if (jRadioButton1.isEnabled()) {
-            for (Materia yupi : gluteos.listadorex()) {
-                corcho.addRow(new Object[]{yupi.getIdMateria(), yupi.getNombre(), yupi.getAño()});
+        
+       inscripcion pibe = (inscripcion)jComboBox1.getSelectedItem(); 
+        inscripcionData gluteos = new inscripcionData();
+        removedor(); 
+//        pibe.getIdalumno()= Integer.parseInt(jComboBox1.getSelectedItem());
+       
+       
+        if (jRadioButton1.isSelected()) {
+      
+            for (Materia yupi : gluteos.obtenerMateriasCursadas(pibe.getAlumnox().getIdalumno())) {
+                corcho.addRow(new Object[]{yupi.getIdMateria(),yupi.getNombre(),yupi.getAño()});
 
             }
-     
+         
                   
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+        else if (jRadioButton2.isSelected()){
+       
+         buttonGroup1.clearSelection();
+         
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -222,4 +239,17 @@ public void organizar() {
 
     }
 
+    private void removedor(){
+    int f = jTable1.getRowCount()-1;
+    for(;f>=0;f--){
+        corcho.removeRow(f);
+    
+    
+    }
+    
+    
+    
+    }
+    
+    
 }
