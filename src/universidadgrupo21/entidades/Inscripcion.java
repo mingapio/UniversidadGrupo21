@@ -9,21 +9,21 @@ package universidadgrupo21.entidades;
  *
  * @author fojos
  */
-public class inscripcion {
+public class Inscripcion {
     private int idinscripcion;   
     private int nota;
     private  Alumno alumnox ;
     private Materia materiax;
     
-    public inscripcion (){}
+    public Inscripcion (){}
 
-    public inscripcion(int nota, Alumno alumnox, Materia materiax) {
+    public Inscripcion(int nota, Alumno alumnox, Materia materiax) {
         this.nota = nota;
         this.alumnox = alumnox;
         this.materiax = materiax;
     }
 
-    public inscripcion(int idinscripcion, int nota, Alumno alumnox, Materia materiax) {
+    public Inscripcion(int idinscripcion, int nota, Alumno alumnox, Materia materiax) {
         this.idinscripcion = idinscripcion;
         this.nota = nota;
         this.alumnox = alumnox;

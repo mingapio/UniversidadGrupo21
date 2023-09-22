@@ -12,8 +12,8 @@ import universidadgrupo21.entidades.Alumno;
 import universidadgrupo21.entidades.Materia;
 import universidadgrupo21.accesoaDatos.MateriaData;
 import java.util.ArrayList;
-import universidadgrupo21.accesoaDatos.inscripcionData;
-import universidadgrupo21.entidades.inscripcion;
+import universidadgrupo21.accesoaDatos.InscripcionData;
+import universidadgrupo21.entidades.Inscripcion;
 import view.GestionUni;
 
 
@@ -61,25 +61,25 @@ public class UniversidadGrupo21 {
 
 //        AlumnoData ad = new AlumnoData();
 //        MateriaData md = new MateriaData();
-//        inscripcionData id = new inscripcionData();
+//        InscripcionData id = new InscripcionData();
 //
 //        Alumno alu = ad.buscador(2);
 //        Materia mat = md.buscadorex(4);
-//        inscripcion ins = new inscripcion(7, alu, mat);
+//        Inscripcion ins = new Inscripcion(7, alu, mat);
 
         // id.guardarInscripcion(ins);
         //id.actualizarNota(2, 4, 10);
         //id.borrarInscripcionMateriaAlumno(2, 4);
-        /* for(inscripcion inscripcion:id.ObtenerInscripciones()){
-        System.out.println("id: "+inscripcion.getIdinscripcion());
-        System.out.println("Apellido: "+inscripcion.getAlumnox().getApellido());
-        System.out.println("Materia: "+inscripcion.getMateriax().getNombre());
+        /* for(Inscripcion Inscripcion:id.ObtenerInscripciones()){
+        System.out.println("id: "+Inscripcion.getIdinscripcion());
+        System.out.println("Apellido: "+Inscripcion.getAlumnox().getApellido());
+        System.out.println("Materia: "+Inscripcion.getMateriax().getNombre());
         System.out.println("----------------------");
          */
-//   for(inscripcion inscripcion:id.ObtenerInscripcionesPorAlumno(1)){
-//        System.out.println("id: "+inscripcion.getAlumnox().getIdalumno());
-//        System.out.println("Apellido: "+inscripcion.getAlumnox().getApellido());
-//        System.out.println("Materia: "+inscripcion.getMateriax().getNombre());
+//   for(Inscripcion Inscripcion:id.ObtenerInscripcionesPorAlumno(1)){
+//        System.out.println("id: "+Inscripcion.getAlumnox().getIdalumno());
+//        System.out.println("Apellido: "+Inscripcion.getAlumnox().getApellido());
+//        System.out.println("Materia: "+Inscripcion.getMateriax().getNombre());
 //        System.out.println("----------------------");
 //    }
 //   for (Materia matins : id.obtenerMateriasNoCursadas(1)) {

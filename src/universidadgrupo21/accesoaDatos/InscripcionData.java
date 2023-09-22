@@ -19,19 +19,19 @@ import universidadgrupo21.entidades.*;
  *
  * @author fojos
  */
-public class inscripcionData {
+public class InscripcionData {
 
     private Connection conectador = null;
     private AlumnoData ad = new AlumnoData();
     private MateriaData md = new MateriaData();
 
-    public inscripcionData() {
+    public InscripcionData() {
 
         this.conectador = Conexion.conectorCin();
 
     }
 
-    public void guardarInscripcion(inscripcion anotado) {
+    public void guardarInscripcion(Inscripcion anotado) {
         String sqlo = "INSERT INTO inscripcion(nota ,idalumno ,idmateria) VALUES (?,?,?)";
         try {
             PreparedStatement upa = conectador.prepareStatement(sqlo, Statement.RETURN_GENERATED_KEYS);
@@ -79,15 +79,15 @@ public class inscripcionData {
         }
     }
 
-    public List<inscripcion> ObtenerInscripciones() {
-        ArrayList<inscripcion> cursadas = new ArrayList<>();
+    public List<Inscripcion> ObtenerInscripciones() {
+        ArrayList<Inscripcion> cursadas = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion";
         PreparedStatement ps;
         try {
             ps = conectador.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                inscripcion ins = new inscripcion();
+                Inscripcion ins = new Inscripcion();
                 ins.setIdinscripcion(rs.getInt("idinscripcion"));
                 Alumno alu = ad.buscador(rs.getInt("idAlumno"));
                 Materia mat = md.buscadorex(rs.getInt("idMateria"));
@@ -105,8 +105,8 @@ public class inscripcionData {
 
     }
 
-    public List<inscripcion> ObtenerInscripcionesPorAlumno(int idAlumno) {
-        ArrayList<inscripcion> cursadas = new ArrayList<>();
+    public List<Inscripcion> ObtenerInscripcionesPorAlumno(int idAlumno) {
+        ArrayList<Inscripcion> cursadas = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion WHERE idAlumno=?";
         try {
             PreparedStatement ps = conectador.prepareStatement(sql);
@@ -114,7 +114,7 @@ public class inscripcionData {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                inscripcion ins = new inscripcion();
+                Inscripcion ins = new Inscripcion();
                 ins.setIdinscripcion(rs.getInt("idinscripcion"));
                 Alumno alu = ad.buscador(rs.getInt("idAlumno"));
                 Materia mat = md.buscadorex(rs.getInt("idMateria"));
