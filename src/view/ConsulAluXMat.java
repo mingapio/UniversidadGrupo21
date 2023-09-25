@@ -6,7 +6,11 @@
 package view;
 
 import javax.swing.table.DefaultTableModel;
+import universidadgrupo21.accesoaDatos.AlumnoData;
+import universidadgrupo21.accesoaDatos.InscripcionData;
 import universidadgrupo21.accesoaDatos.MateriaData;
+import universidadgrupo21.entidades.Alumno;
+import universidadgrupo21.entidades.Inscripcion;
 import universidadgrupo21.entidades.Materia;
 
 /**
@@ -52,6 +56,12 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
         jLabel1.setText("LISTA DE ALUMNOS POR MATERIA");
 
         jlSeleccion.setText("Seleccionar una materia:");
+
+        jcMaterias.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcMateriasItemStateChanged(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +129,27 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jcMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcMateriasItemStateChanged
+        InscripcionData id = new InscripcionData();
+        AlumnoData ad = new AlumnoData();
+        Materia seleccionada = (Materia) jcMaterias.getSelectedItem();
+        if (evt.getStateChange()==java.awt.event.ItemEvent.DESELECTED){
+            removedor();
+        for (Alumno alu : id.obtenerAlumnosXMateria(seleccionada.getIdMateria())){
+            if(seleccionada.equals()){
+                corcha.addRow(new Object[]{
+                    alu.getIdalumno(),
+                    alu.getDni(),
+                    alu.getApellido(),
+                    alu.getNombre(),
+                    
+                });
+            }
+        }
+        }
+        
+    }//GEN-LAST:event_jcMateriasItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -154,5 +185,7 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
         }
 
     }
+    
+    
 
 }

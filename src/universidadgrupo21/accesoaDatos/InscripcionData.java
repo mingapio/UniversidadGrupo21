@@ -35,9 +35,9 @@ public class InscripcionData {
         String sqlo = "INSERT INTO inscripcion(nota ,idalumno ,idmateria) VALUES (?,?,?)";
         try {
             PreparedStatement upa = conectador.prepareStatement(sqlo, Statement.RETURN_GENERATED_KEYS);
-            upa.setInt(1, anotado.getAlumnox().getIdalumno());
-            upa.setInt(2, anotado.getMateriax().getIdMateria());
-            upa.setInt(3, anotado.getNota());
+            upa.setInt(1, anotado.getNota());
+            upa.setInt(2, anotado.getAlumnox().getIdalumno());
+            upa.setInt(3, anotado.getMateriax().getIdMateria());
             upa.executeUpdate();
 
         } catch (SQLException ex) {

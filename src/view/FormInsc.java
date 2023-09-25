@@ -22,7 +22,7 @@ import universidadgrupo21.entidades.Inscripcion;
  * @author Lucas
  */
 public class FormInsc extends javax.swing.JInternalFrame {
-
+    private InscripcionData inscData;
     DefaultTableModel corcho = new DefaultTableModel();
 
     public boolean isCellEditable(int f, int c) {
@@ -37,6 +37,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
         initComponents();
         organizar();
         cargarcombo();
+        inscData = new InscripcionData();
     }
 
     /**
@@ -111,6 +112,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
         });
 
         jbAnularInsc.setText("Anular inscripción");
+        jbAnularInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAnularInscActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -186,19 +192,19 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        Inscripcion ins=new Inscripcion();
-        InscripcionData insD=new InscripcionData();
-        
-        if (jrNoInscriptas.isSelected()) {
-            for (Materia mat : insD.obtenerMateriasCursadas(alu.getIdalumno())) {
-                jTable1.getSelectedRow(new Object[]{
-                    mat.getIdMateria(),
-                    mat.getNombre(),
-                    mat.getAño(),});
-
-            }
-       
-        }
+     
+                int filaS=jTable1.getSelectedRow();
+                if(filaS!=-1){
+                Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+                int idMateria = (Integer)corcho.getValueAt(filaS, 0);
+                String nombreMateria = (String) corcho.getValueAt (filaS, 1);
+                int anio = (Integer)corcho.getValueAt(filaS, 2);
+                Materia mat = new Materia (idMateria, nombreMateria, anio, true);
+                Inscripcion ins = new Inscripcion(anio, alu, mat);
+                inscData.guardarInscripcion(ins);
+                removedor();
+                }
+           
         
     }//GEN-LAST:event_jbInscribirActionPerformed
 
@@ -236,6 +242,16 @@ public class FormInsc extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_jrNoInscriptasActionPerformed
+
+    private void jbAnularInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularInscActionPerformed
+        int filaS=jTable1.getSelectedRow();
+                if(filaS!=-1){
+                Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+                int idMateria = (Integer)corcho.getValueAt(filaS, 0);
+                inscData.borrarInscripcionMateriaAlumno(alu.getIdalumno(), idMateria);
+                removedor();
+                }
+    }//GEN-LAST:event_jbAnularInscActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
