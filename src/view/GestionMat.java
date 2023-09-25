@@ -222,12 +222,12 @@ public class GestionMat extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmodificarActionPerformed
-        Materia materia = new Materia();//jTextField2.getText(), Integer.parseInt(jTextField3.getText()), true);
+        Materia materia = new Materia();
 
         MateriaData mad = new MateriaData();
         materia.setNombre(jTextField2.getText());
         materia.setAño(Integer.parseInt(jTextField3.getText()));
-        materia.setEstado(true);
+       // materia.setEstado(jRadioButton1.);
         materia.setIdMateria(Integer.parseInt(jTextField1.getText()));
         mad.modificarMateria(materia);
         

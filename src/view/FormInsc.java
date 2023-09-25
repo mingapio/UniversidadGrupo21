@@ -186,7 +186,20 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        // TODO add your handling code here:
+        Inscripcion ins=new Inscripcion();
+        InscripcionData insD=new InscripcionData();
+        
+        if (jrNoInscriptas.isSelected()) {
+            for (Materia mat : insD.obtenerMateriasCursadas(alu.getIdalumno())) {
+                jTable1.getSelectedRow(new Object[]{
+                    mat.getIdMateria(),
+                    mat.getNombre(),
+                    mat.getAño(),});
+
+            }
+       
+        }
+        
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jrInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrInscriptasActionPerformed
