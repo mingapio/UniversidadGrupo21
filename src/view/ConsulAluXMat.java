@@ -130,13 +130,15 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcMateriasItemStateChanged
-        InscripcionData id = new InscripcionData();
-        AlumnoData ad = new AlumnoData();
         Materia seleccionada = (Materia) jcMaterias.getSelectedItem();
+        AlumnoData ad = new AlumnoData();
+        InscripcionData id = new InscripcionData();
+        
+        
         if (evt.getStateChange()==java.awt.event.ItemEvent.DESELECTED){
             removedor();
         for (Alumno alu : id.obtenerAlumnosXMateria(seleccionada.getIdMateria())){
-            if(seleccionada.equals()){
+          
                 corcha.addRow(new Object[]{
                     alu.getIdalumno(),
                     alu.getDni(),
@@ -144,7 +146,7 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
                     alu.getNombre(),
                     
                 });
-            }
+            
         }
         }
         
