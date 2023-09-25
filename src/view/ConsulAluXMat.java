@@ -5,17 +5,27 @@
  */
 package view;
 
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo21.accesoaDatos.MateriaData;
+import universidadgrupo21.entidades.Materia;
+
 /**
  *
- * @author Admin
+ * @author Lucas
  */
 public class ConsulAluXMat extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ConsulAluXMat
-     */
+    DefaultTableModel corcha = new DefaultTableModel();
+
+    public boolean isCellEditable(int f, int c) {
+        return false;
+
+    }
+
     public ConsulAluXMat() {
         initComponents();
+        organizar();
+        cargarcombo();
     }
 
     /**
@@ -115,7 +125,34 @@ public class ConsulAluXMat extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcMaterias;
+    private javax.swing.JComboBox<Materia> jcMaterias;
     private javax.swing.JLabel jlSeleccion;
     // End of variables declaration//GEN-END:variables
+
+    public void organizar() {
+        corcha.addColumn("ID");
+        corcha.addColumn("DNI");
+        corcha.addColumn("APELLIDO");
+        corcha.addColumn("NOMBRE");
+        jTable1.setModel(corcha);
+    }
+
+    private void cargarcombo() {
+
+        MateriaData aldope = new MateriaData();
+        for (int i = 0; i < aldope.listadorex().size(); i++) {
+            jcMaterias.addItem(aldope.listadorex().get(i));
+        }
+
+    }
+
+    private void removedor() {
+        int f = jTable1.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            corcha.removeRow(f);
+
+        }
+
+    }
+
 }

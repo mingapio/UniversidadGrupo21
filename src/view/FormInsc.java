@@ -84,6 +84,11 @@ public class FormInsc extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jrNoInscriptas);
         jrNoInscriptas.setText("Materias no inscriptas");
+        jrNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrNoInscriptasActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,25 +190,39 @@ public class FormInsc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jrInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrInscriptasActionPerformed
-      jrNoInscriptas.setSelected(false);  
-      removedor();
-      InscripcionData insc = new InscripcionData();
-      Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+        jrNoInscriptas.setSelected(false);
+        removedor();
+        InscripcionData insc = new InscripcionData();
+        Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
         if (jrInscriptas.isSelected()) {
-            for (Materia mat: insc.obtenerMateriasCursadas(alu.getIdalumno())) {
+            for (Materia mat : insc.obtenerMateriasCursadas(alu.getIdalumno())) {
                 corcho.addRow(new Object[]{
                     mat.getIdMateria(),
                     mat.getNombre(),
-                    mat.getAño(),
-                    
-                    });
-            
-            
-        }
+                    mat.getAño(),});
+
+            }
 
         }
 
     }//GEN-LAST:event_jrInscriptasActionPerformed
+
+    private void jrNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrNoInscriptasActionPerformed
+        jrInscriptas.setSelected(false);
+        removedor();
+        InscripcionData insc = new InscripcionData();
+        Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+        if (jrNoInscriptas.isSelected()) {
+            for (Materia mat : insc.obtenerMateriasNoCursadas(alu.getIdalumno())) {
+                corcho.addRow(new Object[]{
+                    mat.getIdMateria(),
+                    mat.getNombre(),
+                    mat.getAño(),});
+
+            }
+
+        }
+    }//GEN-LAST:event_jrNoInscriptasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
