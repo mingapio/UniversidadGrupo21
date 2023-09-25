@@ -79,13 +79,13 @@ public class AlumnoData {
         }
     }
 
-    public void eliminarAlumno(int id) {
+    public void eliminarAlumno(int dni) {
 
-        String sql = "UPDATE alumno set estado = 0 WHERE idalumno = ?";
+        String sql = "UPDATE alumno set estado = 0 WHERE DNI = ?";
 
         try {
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
             ps.executeUpdate();
             int exit = ps.executeUpdate();
             if (exit == 1) {

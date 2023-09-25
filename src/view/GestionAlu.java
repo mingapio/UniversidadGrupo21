@@ -11,7 +11,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import universidadgrupo21.accesoaDatos.AlumnoData;
+import universidadgrupo21.accesoaDatos.MateriaData;
 import universidadgrupo21.entidades.Alumno;
+import universidadgrupo21.entidades.Materia;
 
 /**
  *
@@ -226,13 +228,10 @@ public class GestionAlu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbguardarActionPerformed
 
     private void jbeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbeliminarActionPerformed
-        Alumno alu = null;
-        if (alu == null) {
-            alu = new Alumno(alu.getIdalumno(), Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrestado.isEnabled());
-            AlumnoData aluD = new AlumnoData();
-            int culo = alu.getIdalumno();
-            aluD.eliminarAlumno(culo);
-        }
+       Alumno alumno = new Alumno();
+        AlumnoData alud= new AlumnoData();
+        alud.eliminarAlumno(Integer.parseInt(jtdoc.getText()));
+        
     }//GEN-LAST:event_jbeliminarActionPerformed
 
     private void jbbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarActionPerformed

@@ -100,5 +100,11 @@ public class UniversidadGrupo21 {
 //    }
 
 //}
-    }
+    
+    
+    
+    Materia materia=new Materia();
+    MateriaData mad=new MateriaData();
+    mad.modificarMateria(materia);
+            }
 }

@@ -53,12 +53,13 @@ public class MateriaData {
     }
 
     public void modificarMateria(Materia matex) {
-        String sql = "UPDATE materia SET nombre=?, año=?, estado=? WHERE nombre =?";
+        String sql = "UPDATE materia SET nombre=?,año=?,estado=? WHERE idmateria =?";
         try {
             PreparedStatement ups = enchufe.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ups.setString(1, matex.getNombre());
             ups.setInt(2, matex.getAño());
             ups.setBoolean(3, matex.getEstado());
+            ups.setInt(4, matex.getIdMateria());
 
             int exito = ups.executeUpdate();
             if (exito == 1) {
