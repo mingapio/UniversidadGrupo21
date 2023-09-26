@@ -191,17 +191,32 @@ public class GestionMat extends javax.swing.JInternalFrame {
     private void jbguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbguardarActionPerformed
         try {
 
-            MateriaData ponele = new MateriaData();
+            Materia mate = new Materia(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), jRadioButton1.isSelected());
+            MateriaData mateD = new MateriaData();
 
-            //   ponele.cargarMaterias(subject);
-        } catch (NumberFormatException t) {
-            JOptionPane.showMessageDialog(null, "escribi bien mamerto" + t.getMessage());
+            if (jTextField2.getText().isEmpty() || !jRadioButton1.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Complete todos los campos");
+                return;
 
+            } else if (!jTextField2.getText().matches("[a-zA-Z]*")) {
+                JOptionPane.showMessageDialog(this, "En el campo 'Nombre'  ingrese solo letras");
+                return;
+            }
+            mateD.cargarMaterias(mate);
+        } catch (NullPointerException np) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+
+        } catch (NumberFormatException nf) {
+            if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Complete todos los campos");
+            } else if (!jTextField1.getText().matches("[0-9]*")) {
+                JOptionPane.showMessageDialog(this, "Coloque un ID de materia correcto");
+            } else if (!jTextField3.getText().matches("[0-9]*")) {
+                JOptionPane.showMessageDialog(this, "Coloque un año de materia correcto");
+            }
         }
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jRadioButton1.setSelected(false);
+
+        limpiar();
 
 
     }//GEN-LAST:event_jbguardarActionPerformed
@@ -210,6 +225,7 @@ public class GestionMat extends javax.swing.JInternalFrame {
         Materia subject = new Materia();
         MateriaData ponele = new MateriaData();
         ponele.eliminarMateria(Integer.parseInt(jTextField1.getText()));
+        limpiar();
 
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -227,13 +243,24 @@ public class GestionMat extends javax.swing.JInternalFrame {
         MateriaData mad = new MateriaData();
         materia.setNombre(jTextField2.getText());
         materia.setAño(Integer.parseInt(jTextField3.getText()));
-       // materia.setEstado(jRadioButton1.);
+        if (jRadioButton1.isSelected()) {
+            materia.setEstado(true);
+
+        } else {
+            materia.setEstado(false);
+        }
         materia.setIdMateria(Integer.parseInt(jTextField1.getText()));
         mad.modificarMateria(materia);
-        
+        limpiar();
 
     }//GEN-LAST:event_jbmodificarActionPerformed
+    private void limpiar() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jRadioButton1.setSelected(false);
 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

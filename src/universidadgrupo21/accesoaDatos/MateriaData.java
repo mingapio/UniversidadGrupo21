@@ -106,7 +106,7 @@ public class MateriaData {
             
           
           }else{
-          JOptionPane.showMessageDialog(null,"la cagaste hermano");
+          JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materias");
           
           
           }
@@ -125,28 +125,28 @@ public class MateriaData {
      public List<Materia> listadorex() {
 
         String sql = " SELECT idmateria ,nombre ,año ,estado FROM materia WHERE estado =1";
-       ArrayList<Materia> aldope = new ArrayList<>();
+       ArrayList<Materia> materia = new ArrayList<>();
         try {
             PreparedStatement ps = enchufe.prepareStatement(sql);
            
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-             Materia nose = new Materia();
-              nose.setIdMateria(rs.getInt("idmateria"));
-              nose.setNombre(rs.getString("nombre"));
-              nose.setAño(rs.getInt("año"));
-              nose.setEstado(true);
-              aldope.add(nose);
+             Materia mate = new Materia();
+              mate.setIdMateria(rs.getInt("idmateria"));
+              mate.setNombre(rs.getString("nombre"));
+              mate.setAño(rs.getInt("año"));
+              mate.setEstado(true);
+              materia.add(mate);
             }
 
               
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error porque se me canto" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materias" + ex.getMessage());
         }
-        return aldope;
+        return materia;
     }
 
     
