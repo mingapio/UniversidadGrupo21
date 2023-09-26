@@ -46,16 +46,19 @@ public class InscripcionData {
 
     }
 
-    public void actualizarNota(int idAlumno, int idMateria, double nota) {
-        String sql = "UPDATE inscripcion SET nota=? WHERE idAlumno=? AND idMateria=?";
+    public void actualizarNota(int idAlumno, int idMateria, int nota) {
+        
+        String sql = "UPDATE inscripcion SET nota=? WHERE idalumno=? AND idmateria=?";
         try {
             PreparedStatement ps = conectador.prepareStatement(sql);
-            ps.setDouble(1, nota);
+            ps.setInt(1, nota);
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
             int resultado = ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, resultado);
             if (resultado == 1) {
                 JOptionPane.showMessageDialog(null, "Nota actualizada");
+                
             }
             ps.close();
         } catch (SQLException ex) {
