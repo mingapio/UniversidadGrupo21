@@ -48,14 +48,13 @@ public class InscripcionData {
 
     public void actualizarNota(int idAlumno, int idMateria, int nota) {
         
-        String sql = "UPDATE inscripcion SET nota=? WHERE idalumno=? AND idmateria=?";
+        String sql = "UPDATE inscripcion SET nota=? WHERE idalumno=? and idmateria=?";
         try {
             PreparedStatement ps = conectador.prepareStatement(sql);
             ps.setInt(1, nota);
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
             int resultado = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, resultado);
             if (resultado == 1) {
                 JOptionPane.showMessageDialog(null, "Nota actualizada");
                 

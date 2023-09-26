@@ -20,7 +20,7 @@ import universidadgrupo21.entidades.Materia;
  */
 public class ActuNotas extends javax.swing.JInternalFrame {
 
-    private InscripcionData inscData;
+//    private InscripcionData inscData;
     DefaultTableModel corcha = new DefaultTableModel();
 
     public boolean isCellEditable(int f, int c) {
@@ -32,7 +32,7 @@ public class ActuNotas extends javax.swing.JInternalFrame {
         initComponents();
         cargarcombo();
         organizar();
-        inscData = new InscripcionData();
+//        inscData = new InscripcionData();
     }
 
     /**
@@ -168,22 +168,41 @@ public class ActuNotas extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         int filaS = jtNotas.getSelectedRow();
+        Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+        InscripcionData id = new InscripcionData();
         Inscripcion ins = new Inscripcion();
+        int idAlumno=alu.getIdalumno();
         //Materia mate=new Materia();
         //Alumno alumno=new Alumno();
         if (filaS != -1) {
-            Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
             int idMateria = (Integer) corcha.getValueAt(filaS, 0);
-            String nombreMateria = (String) corcha.getValueAt(filaS, 1);
+            String notaV = corcha.getValueAt(filaS, 2).toString();
+                int nota = Integer.parseInt(notaV);
+            for (Materia mate : id.obtenerMateriasCursadas(alu.getIdalumno())) {
 
-            ins.setNota((int) corcha.getValueAt(filaS, 2));
+                corcha.addRow(new Object[]{
+                    mate.getIdMateria(),
+                    mate.getNombre(),
+                    ins.getNota()
+                    
+                });
+                    removedor();
+            }
+            
+//            Alumno alu = (Alumno) jcAlumnos.getSelectedItem();
+            // int idMateria = (Integer) corcha.getValueAt(filaS, 0);
+//            String nombreMateria = (String) corcha.getValueAt(filaS, 1);
+
+            //String notaV = corcha.getValueAt(filaS, 2).toString();
+              //  int nota = Integer.parseInt(notaV);
               
-            int nota = ins.getNota();
+//            int nota = ins.getNota();
+            
              
           
-             inscData.actualizarNota(alu.getIdalumno(), idMateria, nota);
+             id.actualizarNota(idAlumno, idMateria, nota);
 
-            removedor();
+//            removedor();
 
         }
     }//GEN-LAST:event_jbGuardarActionPerformed

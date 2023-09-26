@@ -245,29 +245,28 @@ public class GestionAlu extends javax.swing.JInternalFrame {
 //       jtape.setText(alu.getApellido());
 
         try {
-            // Obtener el DNI del alumno a buscar desde el campo de texto
+            
             int dni = Integer.parseInt(jtdoc.getText());
 
-            // Crear una instancia de AlumnoData (si aún no la tienes)
+           
             AlumnoData aluD = new AlumnoData();
 
-            // Buscar al alumno por su DNI
             Alumno alu = aluD.buscarAlumnodni(dni);
 
             if (alu != null) {
-                // Mostrar los datos en los componentes GUI
+               
                 jtnomb.setText(alu.getNombre());
                 jtape.setText(alu.getApellido());
                 jdcfecha.setDate(Date.from(alu.getNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 jrestado.setSelected(alu.getEstado());
-                // Puedes mostrar un mensaje de éxito si lo deseas
+                
                 JOptionPane.showMessageDialog(null, "Alumno encontrado.");
             } else {
-                // Mostrar un mensaje si el alumno no se encontró
+               
                 JOptionPane.showMessageDialog(null, "Alumno no encontrado.");
             }
         } catch (NumberFormatException e) {
-            // Manejar una excepción si el campo de texto no contiene un número válido
+            
             JOptionPane.showMessageDialog(null, "Ingresa un DNI válido.");
         }
 

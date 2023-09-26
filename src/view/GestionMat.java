@@ -93,6 +93,11 @@ public class GestionMat extends javax.swing.JInternalFrame {
         });
 
         jButton5.setText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jbmodificar.setText("Modificar Mat");
         jbmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +259,10 @@ public class GestionMat extends javax.swing.JInternalFrame {
         limpiar();
 
     }//GEN-LAST:event_jbmodificarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
     private void limpiar() {
         jTextField1.setText("");
         jTextField2.setText("");
