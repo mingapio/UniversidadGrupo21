@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import java.awt.Graphics;
+
 /**
  *
  * @author NICOLAS
@@ -16,7 +20,7 @@ public class GestionUni extends javax.swing.JFrame {
      */
     public GestionUni() {
         initComponents();
-        
+
     }
 
     /**
@@ -28,7 +32,15 @@ public class GestionUni extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon iconin = new ImageIcon(getClass().getResource("/imagenes/escudito.JPG"));
+        Image picture = iconin.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                g.drawImage(picture,0,0,getWidth(),getHeight(),this);
+            }
+
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MIgestionAlu = new javax.swing.JMenuItem();
@@ -132,7 +144,7 @@ public class GestionUni extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MIgestionAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIgestionAluActionPerformed
-          GestionAlu alu = new GestionAlu();
+        GestionAlu alu = new GestionAlu();
 
         escritorio.add(alu);
 
@@ -145,7 +157,7 @@ public class GestionUni extends javax.swing.JFrame {
         escritorio.add(mat);
 
         mat.setVisible(true);
-        
+
     }//GEN-LAST:event_MIgestionMatActionPerformed
 
     private void MIformInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIformInscActionPerformed

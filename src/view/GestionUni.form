@@ -119,6 +119,10 @@
           <Dimension value="[800, 600]"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;&#xa;    public void paintComponent(Graphics g){&#xa;        g.drawImage(picture,0,0,getWidth(),getHeight(),this);&#xa;    }&#xa;&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon iconin = new ImageIcon(getClass().getResource(&quot;/imagenes/escudito.JPG&quot;));&#xa; Image picture = iconin.getImage();"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
