@@ -136,7 +136,7 @@ public class MateriaData {
               mate.setIdMateria(rs.getInt("idmateria"));
               mate.setNombre(rs.getString("nombre"));
               mate.setAño(rs.getInt("año"));
-              mate.setEstado(true);
+              mate.setEstado(rs.getBoolean("estado"));
               materia.add(mate);
             }
 

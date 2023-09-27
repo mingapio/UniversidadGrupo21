@@ -194,7 +194,7 @@ public class GestionMat extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jbguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbguardarActionPerformed
-        try {
+       try {
 
             Materia mate = new Materia(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), jRadioButton1.isSelected());
             MateriaData mateD = new MateriaData();
@@ -203,8 +203,8 @@ public class GestionMat extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Complete todos los campos");
                 return;
 
-            } else if (!jTextField2.getText().matches("[a-zA-Z]*")) {
-                JOptionPane.showMessageDialog(this, "En el campo 'Nombre'  ingrese solo letras");
+            } else if (jTextField2.getText().startsWith("[0-9]") || !jTextField2.getText().matches("^[a-zA-Z0-9 ]*$")) {
+                JOptionPane.showMessageDialog(this, "El nombre debe ir en letras");
                 return;
             }
             mateD.cargarMaterias(mate);
@@ -214,9 +214,9 @@ public class GestionMat extends javax.swing.JInternalFrame {
         } catch (NumberFormatException nf) {
             if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Complete todos los campos");
-            } else if (!jTextField1.getText().matches("[0-9]*")) {
+            } else if (!jTextField1.getText().matches("[0-9 ]*")) {
                 JOptionPane.showMessageDialog(this, "Coloque un ID de materia correcto");
-            } else if (!jTextField3.getText().matches("[0-9]*")) {
+            } else if (!jTextField3.getText().matches("[0-9 ]*")) {
                 JOptionPane.showMessageDialog(this, "Coloque un año de materia correcto");
             }
         }

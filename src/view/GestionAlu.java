@@ -204,26 +204,27 @@ public class GestionAlu extends javax.swing.JInternalFrame {
             Alumno alu = new Alumno(Integer.parseInt(jtdoc.getText()), jtnomb.getText(), jtape.getText(), jdcfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrestado.isEnabled());
             AlumnoData aluD = new AlumnoData();
 
-            if (jtnomb.getText().isEmpty() || jtape.getText().isEmpty()) {
+            if (jtnomb.getText().isEmpty() || jtape.getText().isEmpty()||!jrestado.isSelected()) {
                 JOptionPane.showMessageDialog(this, "Complete todos los campos");
                 return;
 
-            } else if (!jtnomb.getText().matches("[a-zA-Z]*") || !jtape.getText().matches("[a-zA-Z]*")) {
-                JOptionPane.showMessageDialog(this, "En los campos 'Nombre' y 'Apellido' ingrese solo letras");
+           
+            }else if(!jtnomb.getText().matches("^[a-zA-Z ]*$")||!jtape.getText().matches("^[a-zA-Z ]*$")){
+            JOptionPane.showMessageDialog(this, "En los campos 'Nombre' y 'Apellido' ingrese solo letras");
                 return;
             }
             aluD.guardarAlumno(alu);
+            limpiar();
         } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos");
 
         } catch (NumberFormatException nf) {
             if (jtdoc.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Complete todos los campos");
-            } else if (!jtdoc.getText().matches("[0-9]*")) {
+            } else if (!jtdoc.getText().matches("^[0-9 ]*$")) {
                 JOptionPane.showMessageDialog(this, "Coloque un dni correcto");
             }
         }
-
 
     }//GEN-LAST:event_jbguardarActionPerformed
 
@@ -297,4 +298,13 @@ public class GestionAlu extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtdoc;
     private javax.swing.JTextField jtnomb;
     // End of variables declaration//GEN-END:variables
+public void limpiar(){
+jtnomb.setText("");
+jtape.setText("");
+jtdoc.setText("");
+jrestado.setSelected(false);
+jdcfecha.setDate(null);
+}
+
+
 }

@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo21.accesoaDatos.AlumnoData;
 import universidadgrupo21.accesoaDatos.MateriaData;
@@ -203,7 +204,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
                 Inscripcion ins = new Inscripcion(anio, alu, mat);
                 inscData.guardarInscripcion(ins);
                 removedor();
-                }
+                }else{JOptionPane.showMessageDialog(this, "Seleccione una  fila de la tabla");}
            
         
     }//GEN-LAST:event_jbInscribirActionPerformed
@@ -250,7 +251,7 @@ public class FormInsc extends javax.swing.JInternalFrame {
                 int idMateria = (Integer)corcho.getValueAt(filaS, 0);
                 inscData.borrarInscripcionMateriaAlumno(alu.getIdalumno(), idMateria);
                 removedor();
-                }
+                }else{JOptionPane.showMessageDialog(this, "Seleccione una  fila de la tabla");}
     }//GEN-LAST:event_jbAnularInscActionPerformed
 
 

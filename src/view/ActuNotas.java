@@ -204,7 +204,7 @@ public class ActuNotas extends javax.swing.JInternalFrame {
 
 //            removedor();
 
-        }
+        }else{JOptionPane.showMessageDialog(this, "Seleccione una  fila de la tabla");}
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 

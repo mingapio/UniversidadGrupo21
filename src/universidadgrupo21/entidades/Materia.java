@@ -67,7 +67,7 @@ public class Materia {
     
     @Override
     public String toString() {
-        return nombre+ "," + año + "," + estado;
+        return nombre + "," + año ;
     }
     
     
